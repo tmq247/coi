@@ -36,7 +36,7 @@ async def playmode_(client, message: Message, _):
             return await message.reply_text(_["cplay_5"])
         try:
             async for user in app.get_chat_members(
-                chat.id, filter=ChatMembersFilter.MEMBER
+                chat.id, filter=ChatMembersFilter.ADMINISTRATOR
             ):
                 if user.status == ChatMemberStatus.MEMBER:
                     cusn = user.user.username
