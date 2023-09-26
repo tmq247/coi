@@ -32,13 +32,13 @@ async def playmode_(client, message: Message, _):
             chat = await app.get_chat(query)
         except:
             return await message.reply_text(_["cplay_4"])
-        if chat.type != ChatType.SUPERGROUP:
+        if chat.type != ChatType.CHANNEL:
             return await message.reply_text(_["cplay_5"])
         try:
             async for user in app.get_chat_members(
-                chat.id, filter=ChatMembersFilter.ADMINISTRATOR
+                chat.id, filter=ChatMembersFilter.MEMBER
             ):
-                if user.status == ChatMemberStatus.OWNER:
+                if user.status == ChatMemberStatus.MEMBER:
                     cusn = user.user.username
                     crid = user.user.id
         except:
