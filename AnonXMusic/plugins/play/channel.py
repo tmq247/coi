@@ -38,7 +38,7 @@ async def playmode_(client, message: Message, _):
             async for user in app.get_chat_members(
                 chat.id, filter=ChatMembersFilter.ADMINISTRATOR
             ):
-                if user.status == ChatMemberStatus.MEMBER:
+                if user.status == ChatMemberStatus.ADMINISTRATOR:
                     cusn = user.user.username
                     crid = user.user.id
         except:
