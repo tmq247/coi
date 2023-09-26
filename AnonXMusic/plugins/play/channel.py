@@ -2,6 +2,7 @@ from pyrogram import filters
 from pyrogram.enums import ChatMembersFilter, ChatMemberStatus, ChatType
 from pyrogram.types import Message
 
+from AnonXMusic.misc import SUDOERS
 from AnonXMusic import app
 from AnonXMusic.utils.database import set_cmode
 from AnonXMusic.utils.decorators.admins import AdminActual
@@ -38,7 +39,7 @@ async def playmode_(client, message: Message, _):
             async for user in app.get_chat_members(
                 chat.id, filter=ChatMembersFilter.ADMINISTRATORS
             ):
-                if user.status == ChatMemberStatus.ADMINISTRATOR:
+                if user.status == SUDOERS:
                     cusn = user.user.username
                     crid = user.user.id
         except:
