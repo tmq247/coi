@@ -32,10 +32,10 @@ from config import BANNED_USERS, lyrical
             "vphat",
             "cphat",
             "cvphat",
-            "playforce",
-            "vplayforce",
-            "cplayforce",
-            "cvplayforce",
+            "phatngay",
+            "vphatngay",
+            "cphatngay",
+            "cvphatngay",
         ]
     )
     & filters.group
