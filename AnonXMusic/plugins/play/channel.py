@@ -31,7 +31,7 @@ async def playmode_(client, message: Message, _):
             return await message.reply_text(_["cplay_2"])
     else:
         try:
-            chat = await app.get_chat(query)
+            chat = await client.get_chat(query)
         except:
             return await message.reply_text(_["cplay_4"])
         if chat.type != ChatType.SUPERGROUP:
