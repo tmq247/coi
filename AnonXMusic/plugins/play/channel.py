@@ -16,7 +16,7 @@ async def playmode_(client, message: Message, ):
     if (str(query)).lower() == "disable":
         await set_cmode(message.chat.id, None)
         return await message.reply_text(_["cplay_7"])
-    chat = await assistants.get_chat(query)
+    chat = await client.get_chat(query)
     await set_cmode(message.chat.id, chat.id)
     return await message.reply_text(_["cplay_3"].format(chat.title, chat.id))
 
