@@ -3,7 +3,7 @@ from pyrogram.enums import ChatMembersFilter, ChatMemberStatus, ChatType
 from pyrogram.types import Message
 
 from AnonXMusic.misc import SUDOERS ,db
-from AnonXMusic import app
+from AnonXMusic import app, userbot
 from AnonXMusic.utils.database import set_cmode
 from AnonXMusic.utils.decorators.admins import AdminActual
 from config import BANNED_USERS
@@ -14,7 +14,7 @@ async def playmode_(client, message: Message, ):
     if (str(query)).lower() == "disable":
         await set_cmode(message.chat.id, None)
         return await message.reply_text(_["cplay_7"])
-    #chat = await .get_chat(query)
+    chat = await userbot.get_chat(query)
     await set_cmode(message.chat.id, chat.id)
     return await message.reply_text(_["cplay_3"].format(chat.title, chat.id))
 
