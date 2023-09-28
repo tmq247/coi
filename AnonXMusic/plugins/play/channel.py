@@ -9,7 +9,7 @@ from AnonXMusic.utils.decorators.admins import AdminActual
 from config import BANNED_USERS
 
 @app.on_message(filters.command(["lk"]) & filters.group & ~BANNED_USERS)
-async def playmode_(client, message: Message, _):
+async def playmode_(client, message: Message, ):
     query = message.text.split(None, 2)[1].lower().strip()
     if (str(query)).lower() == "disable":
         await set_cmode(message.chat.id, None)
