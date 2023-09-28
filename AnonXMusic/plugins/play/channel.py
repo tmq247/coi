@@ -10,17 +10,6 @@ from config import BANNED_USERS
 from AnonXMusic.core.userbot import assistants
 
 
-@app.on_message(filters.command(["lk"]) & filters.group & ~BANNED_USERS)
-async def playmode_(client, message: Message, ):
-    query = message.text.split(None, 2)[1].lower().strip()
-    if (str(query)).lower() == "disable":
-        await set_cmode(message.chat.id, None)
-        return await message.reply_text(_["cplay_7"])
-    chat = await client.get_chat(query)
-    await set_cmode(message.chat.id, chat.id)
-    return await message.reply_text(_["cplay_3"].format(chat.title, chat.id))
-
-
 @app.on_message(filters.command(["lienket"]) & filters.group & ~BANNED_USERS)
 @AdminActual
 async def playmode_(client, message: Message, _):
@@ -47,11 +36,11 @@ async def playmode_(client, message: Message, _):
             return await message.reply_text(_["cplay_4"])
         if chat.type != ChatType.SUPERGROUP:
             return await message.reply_text(_["cplay_5"])
-        try:
-            async for user in app.get_chat_members(
-                chat.id, filter=ChatMembersFilter.ADMINISTRATORS
-            ):
-                if user.status == ChatMemberStatus.ADMINISTRATOR:
+        #try:
+            #async for user in client.get_chat_members(
+                #chat.id, filter=ChatMembersFilter.ADMINISTRATORS
+            #):
+                #if user.status == ChatMemberStatus.ADMINISTRATOR:
                     cusn = message.from_user.username#user.user.username
                     crid = message.from_user.id#user.user.id
         except:
