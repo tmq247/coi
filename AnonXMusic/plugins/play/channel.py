@@ -30,22 +30,22 @@ async def playmode_(client, message: Message, _):
         else:
             return await message.reply_text(_["cplay_2"])
     else:
-        #try:
-            #chat = await app.get_chat(query)
-        #except:
-            #return await message.reply_text(_["cplay_4"])
-        #if chat.type != ChatType.SUPERGROUP:
-            #return await message.reply_text(_["cplay_5"])
-        #try:
-            #async for user in client.get_chat_members(
-                #chat.id, filter=ChatMembersFilter.ADMINISTRATORS
-            #):
-                #if user.status == ChatMemberStatus.ADMINISTRATOR:
-                    #cusn = message.from_user.username#user.user.username
-                    #crid = message.from_user.id#user.user.id
-        #except:
-            #return await message.reply_text(_["cplay_4"])
-        #if crid != message.from_user.id:
-            #return await message.reply_text(_["cplay_6"].format(chat.title, cusn))
+        try:
+            chat = await client.get_chat(query)
+        except:
+            return await message.reply_text(_["cplay_4"])
+        if chat.type != ChatType.SUPERGROUP:
+            return await message.reply_text(_["cplay_5"])
+        try:
+            async for user in client.get_chat_members(
+                chat.id, filter=ChatMembersFilter.ADMINISTRATORS
+            ):
+                if user.status == ChatMemberStatus.ADMINISTRATOR:
+                    cusn = message.from_user.username#user.user.username
+                    crid = message.from_user.id#user.user.id
+        except:
+            return await message.reply_text(_["cplay_4"])
+        if crid != message.from_user.id:
+            return await message.reply_text(_["cplay_6"].format(chat.title, cusn))
         await set_cmode(message.chat.id, chat.id)
         return await message.reply_text(_["cplay_3"].format(chat.title, chat.id))
