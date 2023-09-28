@@ -45,9 +45,7 @@ async def playmode_(client, message: Message, _):
                     #crid = message.from_user.id#user.user.id
         #except:
             #return await message.reply_text(_["cplay_4"])
-        cusn = message.from_user.username#user.user.username
-        crid = message.from_user.id#user.user.id
-        if crid != message.from_user.id:
-            return await message.reply_text(_["cplay_6"].format(chat.title, cusn))
+        #if crid != message.from_user.id:
+            #return await message.reply_text(_["cplay_6"].format(chat.title, cusn))
         await set_cmode(message.chat.id, chat.id)
         return await message.reply_text(_["cplay_3"].format(chat.title, chat.id))
