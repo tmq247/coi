@@ -8,6 +8,12 @@ from AnonXMusic.utils.database import set_cmode
 from AnonXMusic.utils.decorators.admins import AdminActual
 from config import BANNED_USERS
 
+@app.on_message(filters.command(["lk"]) & filters.group & ~BANNED_USERS)
+async def playmode_(client, message: Message, _):
+    chat = await app.get_chat(message.chat.id)
+    await set_cmode(message.chat.id, chat.id)
+    return await message.reply_text(_["cplay_3"].format(chat.title, chat.id))
+
 
 @app.on_message(filters.command(["lienket"]) & filters.group & ~BANNED_USERS)
 @AdminActual
