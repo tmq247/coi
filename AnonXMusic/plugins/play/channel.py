@@ -20,9 +20,9 @@ async def playmode_(client, message: Message, _):
         await set_cmode(message.chat.id, None)
         return await message.reply_text(_["cplay_7"])
     elif str(query) == "linked":
-        chat = await userbot.get_chat(message.chat.id)
+        chat = await assistants.get_chat(message.chat.id)
         if chat.linked_chat:
-            chat_id = userbot.linked_chat.id
+            chat_id = assistants.linked_chat.id
             await set_cmode(message.chat.id, chat_id)
             return await message.reply_text(
                 _["cplay_3"].format(chat.linked_chat.title, chat.linked_chat.id)
@@ -31,13 +31,13 @@ async def playmode_(client, message: Message, _):
             return await message.reply_text(_["cplay_2"])
     else:
         try:
-            chat = await userbot.get_chat(query)
+            chat = await assistants.get_chat(query)
         except:
             return await message.reply_text(_["cplay_4"])
         if chat.type != ChatType.SUPERGROUP:
             return await message.reply_text(_["cplay_5"])
         try:
-            async for user in userbot.get_chat_members(
+            async for user in assistants.get_chat_members(
                 chat.id, filter=ChatMembersFilter.ADMINISTRATORS
             ):
                 if user.status == ChatMemberStatus.ADMINISTRATOR:
