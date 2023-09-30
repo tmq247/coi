@@ -141,7 +141,7 @@ def PlayWrapper(command):
                             pass
                     else:
                         try:
-                            invitelink = await app.export_chat_invite_link(chat_id)
+                            invitelink = await app.get_chat_invite_link(chat_id) #export_chat_invite_link(chat_id)
                         except ChatAdminRequired:
                             return await message.reply_text(_["call_1"])
                         except Exception as e:
