@@ -118,8 +118,9 @@ def PlayWrapper(command):
             try:
                 try:
                     get = await app.get_chat_member(chat_id, userbot.id)
-                #except ChatAdminRequired:
-                    #return await message.reply_text(_["call_1"])
+                except ChatAdminRequired:
+                    #return 
+                    await message.reply_text(_["call_1"])
                 if (
                     get.status == ChatMemberStatus.BANNED
                     or get.status == ChatMemberStatus.RESTRICTED
